@@ -62,6 +62,11 @@ post '/mail' do
   erb :mail
 end
 
+post '/dashboard/add-symptom' do
+  puts params.inspect
+  redirect "/dashboard"
+end
+
 get '/login' do
   redirect '/dashboard'
 end
@@ -75,5 +80,47 @@ get '/dashboard' do
   @humidity = humidity
   @timestamp = pritty_date(date)
   humudity_array
-  erb :dashboard
+  @available_parts=['Head',
+                    'Face',
+                    'Mouth',
+                    'Throat',
+                    'Teeth',
+                    'Right shoulder',
+                    'Left shoulder',
+                    'Right upper arm','Right lower arm',
+                    'Left upper arm','Left lower arm',
+                    'Right hand','Left hand',
+                    'Chest',
+                    'Stomach',
+                    'Right upper part of leg',
+                    'Left upper part of leg',
+                    'Right lower part of leg',
+                    'Left lower part of leg',
+                    'Right knee', 'Left knee',
+                    'Left Foot', 'Right Foot']
+  @available_symptoms=['Hurts',
+                       'Tingles',
+                       'Cramps',
+                       'Feels weird',
+                       'Pounds',
+                       'Under heavy pressure',
+                       'Itches']
+  @available_actions=['I do nothing',
+                      'I stand up',
+                      'I sit down',
+                      'I hit myself',
+                      'I sleep',
+                      "I'm on the toilet",
+                      'I swallow',
+                      'I breathe']
+  @available_times=['Always',
+                    'Every time',
+                    'Sometimes',
+                    'Every week',
+                    'Every day',
+                    'In the mornings',
+                    'In the afternoon',
+                    'In the evening',
+                    'At night']
+  erb :dashboard, locals: {avail_parts: @available_parts, avail_symp: @available_symptoms, avail_actions: @available_actions, avail_times: @available_times}
 end
