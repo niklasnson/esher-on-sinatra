@@ -29,17 +29,20 @@ def pritty_date(date)
 end
 
 def data_date(date)
+  date.strtime("20170909 %H:%M'")
 end
 
 
-def test
-  url = "http://vitalbond.azurewebsites.net/home/sql?0=Esher"
-  payload = "iGetSensorData 2, 'humidity','20170901 12:56', '20170909 17:03'"
-  response = HTTParty.post(url, body: payload)
-  humidity = response["Descr"]
-  puts response.inspect
+post '/mail' do
+  @name=params[:name]
+  @from=params[:email]
+  @message=params[:message]
+  erb :mail
 end
 
+get '/login' do
+  redirect '/dashboard'
+end
 
 get '/' do
   erb :index
@@ -49,6 +52,5 @@ get '/dashboard' do
   @tempature = temperature
   @humidity = humidity
   @timestamp = pritty_date(date)
-  test
   erb :dashboard
 end

@@ -20,9 +20,9 @@
       <div class="card" id="live-data-container" style="height: 350px;">
         <div class="card-block">
           <ul class="icon-list">
-            <li><i class="fa fa-thermometer-full fa-3x" aria-hidden="true"></i> <span>15</span></li>
-            <li><i class="fa fa-heartbeat fa-3x" aria-hidden="true"></i> <span>15</span></li>
-            <li><i class="fa fa-stethoscope fa-3x" aria-hidden="true"></i> <span>Last data</span></li>
+            <li><i class="fa fa-thermometer-full fa-3x" aria-hidden="true"></i> <span><%= @tempature %></span></li>
+            <li><i class="fa fa-heartbeat fa-3x" aria-hidden="true"></i> <span><%= humidity %></span></li>
+            <li><i class="fa fa-stethoscope fa-3x" aria-hidden="true"></i> <span><%= @timestamp %></span></li>
           </ul>
         </div>
       </div>
