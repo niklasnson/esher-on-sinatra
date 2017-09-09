@@ -1,3 +1,10 @@
+
+.jumbotron-bg {
+    background-image: url("/jumbotron_bg.jpeg");
+    background-size: cover;
+}
+
+
 .icon-list {
   list-style: none;
   padding: 15px;
