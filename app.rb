@@ -7,6 +7,13 @@ get '/' do
   erb :index
 end
 
+post '/mail' do
+  @name=params[:name]
+  @from=params[:email]
+  @message=params[:message]
+  erb :mail
+end
+
 get '/login' do
   redirect '/dashboard'
 end
