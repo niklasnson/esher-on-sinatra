@@ -1,0 +1,45 @@
+<form>
+  <div class="form-group">
+    <label for="formFeels">It</label>
+    <select name="feel" class="form-control" id="formFeels">
+      <option selected>Feels...</option>
+      <% @symptoms_hash.each do |item| %>
+        <option value="<%=item["ID"] %>"><%= item["Name"] %></option>
+      <% end %>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label for="formFeels">in my</label>
+    <select name="feel" class="form-control" id="formFeels">
+      <option selected>Bodypart...</option>
+      <% @symptoms_hash.each do |item| %>
+        <option value="<%=item["ID"] %>"><%= item["Name"] %></option>
+      <% end %>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label for="formFeels">when</label>
+    <select name="feel" class="form-control" id="formFeels">
+      <option selected>When...</option>
+      <% @symptoms_hash.each do |item| %>
+        <option value="<%=item["ID"] %>"><%= item["Name"] %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="formFeels">At</label>
+    <select name="feel" class="form-control" id="formFeels">
+      <option selected>Time...</option>
+      <% @symptoms_hash.each do |item| %>
+        <option value="<%=item["ID"] %>"><%= item["Name"] %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

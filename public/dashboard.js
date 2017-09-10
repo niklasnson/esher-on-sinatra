@@ -4,7 +4,7 @@ function initMap() {
     zoom: 13,
     mapTypeId: 'terrain'
   });
-  infoWindow = new google.maps.InfoWindow;
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -12,16 +12,15 @@ function initMap() {
         lng: position.coords.longitude
       };
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      document.getElementById('map')
-      infoWindow.open(map);
       map.setCenter(pos);
+      document.getElementById('map').style.visibility = "visible";
     }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      // No geolocation!
     });
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
-  }
+  };
+
 }
+

@@ -1,45 +1,24 @@
 require 'sinatra'
 require 'httparty'
+require 'json'
 
 set :public_folder, 'public'
-
-
-def temperature
-  url = "http://vitalbond.azurewebsites.net/home/sql?0=Esher"
-  payload = "iGetSensorData 2, 'temperature'"
-  #payload = "iGetSensorData 2, 'tempature', #{data_date(DateTime.now)}, #{data_date(DateTime.now)}"
-  response = HTTParty.post(url, body: payload)
-  tempature = response["Descr"]
-  tempature.to_f.round(2)
-end
-
-def humidity
-  url = "http://vitalbond.azurewebsites.net/home/sql?0=Esher"
-  payload = "iGetSensorData 2, 'humidity'"
-  #payload = "iGetSensorData 2, 'humidity', #{data_date(DateTime.now)}, #{data_date(DateTime.now)}"
-  response = HTTParty.post(url, body: payload)
-  humidity = response["Descr"]
-  humidity.to_f.round(2)
-end
 
 def query(type)
   from = "20170909 12:56"
   to = "20170909 13:03"
   url = "http://vitalbond.azurewebsites.net/home/sql?0=Esher"
-  payload = "iGetSensorData 2, '#{type}', '#{from}', '#{to}'"
+  payload = "iGetSensorData 2, '#{type}'"
   response = HTTParty.post(url, body: payload)
   humidity = response["Descr"]
   humidity.to_f.round(2)
 end
 
-def humudity_array
-  a = []
-  i = 13
-  5.times do | num |
-    a << query("humidity")
-    i = i + 1
-  end
-  puts a.inspect
+def symptoms
+  url = "http://vitalbond.azurewebsites.net/home/sql?0=Esher"
+  payload = "getAllSymptoms"
+  response = JSON.parse(HTTParty.post(url, body: payload)["Result"])
+  response
 end
 
 def date
@@ -76,10 +55,10 @@ get '/' do
 end
 
 get '/dashboard' do
-  @tempature = temperature
-  @humidity = humidity
+  @tempature = query("temperature")
+  @humidity = query("humidity")
   @timestamp = pritty_date(date)
-  humudity_array
+  @symptoms_hash = symptoms
   @available_parts=['Head',
                     'Face',
                     'Mouth',

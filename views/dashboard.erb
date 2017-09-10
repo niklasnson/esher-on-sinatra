@@ -14,9 +14,9 @@
           <dl>
             <dt>Patient</dt>
             <dd>Anders Nilsson</dd>
-            <dt>Vårdcentral</dt>
+            <dt>Clinic</dt>
             <dd>Vårdcentralen Kungsgatan<br />Kungsgatan 39 A, 582 18 Linköping</dd>
-            <dt>Doktor</dt>
+            <dt>Doctor</dt>
             <dd>Emma Andersson</dd>
           </dl>
         </div>
@@ -28,7 +28,7 @@
         <div class="card-block">
           <ul class="icon-list">
             <li><i class="fa fa-thermometer-full fa-3x" aria-hidden="true"></i> <span><%= @tempature %></span></li>
-            <li><i class="fa fa-heartbeat fa-3x" aria-hidden="true"></i> <span><%= humidity %></span></li>
+            <li><i class="fa fa-heartbeat fa-3x" aria-hidden="true"></i> <span><%= @humidity %></span></li>
             <li><i class="fa fa-stethoscope fa-3x" aria-hidden="true"></i> <span><%= @timestamp %></span></li>
           </ul>
         </div>
@@ -37,44 +37,16 @@
   </div>
 </div>
 
-<form class="form-inline" method="post" action="/dashboard/add-symptom">
-    <label class="mr-sm-2" for="inlineFormCustomSelect">It</label>
-    <select name="feel" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormFeels">
-        <option selected>Feels...</option>
-        <% avail_symp.each_with_index do |feel, index| %>
-        <option value="<%=index %>"><%= feel %></option>
-        <% end %>
-    </select>
-
-    <label class="mr-sm-2" for="inlineFormCustomSelect">in my</label>
-    <select name="part" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormBodypart">
-        <option selected>Bodypart...</option>
-        <% avail_parts.each_with_index do |part, index| %>
-        <option value="<%=index %>"><%= part %></option>
-        <% end %>
-    </select>
-
-    <label class="mr-sm-2" for="inlineFormCustomSelect"> when </label>
-    <select name="action" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormWhen">
-        <option selected>When...</option>
-        <% avail_actions.each_with_index do |action, index| %>
-        <option value="<%=index %>"><%= action %></option>
-        <% end %>
-    </select>
-
-    <label class="mr-sm-2" for="inlineFormCustomSelect"> at </label>
-    <select name="time" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormTime">
-        <option selected>Time...</option>
-        <% avail_times.each_with_index do |time, index| %>
-        <option value="<%=index %>"><%= time %></option>
-        <% end %>
-    </select>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 
 <div class="container mt-4">
   <div class="row">
-    <div class="col-12">
+    <div class="col-6">
+      <div class="card card-block">
+        <%= erb :'_diagnos_form' %>
+      </div>
+    </div>
+
+    <div class="col-6">
       <div id="map" style="width: 100%; height: 400px; visibility: hidden;"></div>
     </div>
   </div>
@@ -83,5 +55,5 @@
 <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js" crossorigin="anonymous"></script>
 <script async defer type="text/javascript" src="/dashboard.js" crossorigin="anonymous"></script>
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVfEXBtFtzvkpqb98CiSfVgKk51dDC3f8&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVfEXBtFtzvkpqb98CiSfVgKk51dDC3f8&callback=initMap">
 </script>
