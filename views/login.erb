@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="row">
-      <div class="col-md-6 offset-3">
+      <div class="col-md-6 offset-3 py-5">
         <div class="well well-sm">
           <form class="form-horizontal" method="post" action="/login">
               <fieldset>
-                  <legend class="display-4 text-center">Log in!</legend>
+                  <legend class="display-4">Welcome back!</legend>
                   <!-- Email input-->
                   <div class="form-group">
-                      <label class="col-md-3 control-label" for="email">Your E-mail</label>
+                      <label for="email">Your E-mail</label>
                       <div class="col-md-9">
                           <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
                       </div>
@@ -15,7 +15,9 @@
 
                   <div class="form-group">
                       <label for="inputPassword">Your password</label>
-                      <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+                      <div class="col-md-9">
+                          <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+                      </div>
                   </div>
 
                   <!-- Form actions -->
