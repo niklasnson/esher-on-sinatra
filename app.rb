@@ -54,7 +54,6 @@ def data_date(date)
   date.strftime("%Y%m%d %H:%M'")
 end
 
-
 post '/mail' do
   @name=params[:name]
   @from=params[:email]
@@ -68,6 +67,10 @@ post '/dashboard/add-symptom' do
 end
 
 get '/login' do
+  erb :login
+end
+
+post '/login' do
   redirect '/dashboard'
 end
 
