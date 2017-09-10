@@ -36,13 +36,15 @@
     </div>
   </div>
 </div>
-
-
 <div class="container mt-4">
   <div class="row">
     <div class="col-6">
       <div class="card card-block">
-        <%= erb :'_diagnos_form' %>
+        <% if @result %>
+          yes yes
+        <% else %>
+          <%= erb :'_diagnos_form' %>
+        <% end %>
       </div>
     </div>
 
@@ -51,6 +53,8 @@
     </div>
   </div>
 </div>
+
+
 
 <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js" crossorigin="anonymous"></script>
 <script async defer type="text/javascript" src="/dashboard.js" crossorigin="anonymous"></script>

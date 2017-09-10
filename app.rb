@@ -42,7 +42,12 @@ end
 
 post '/dashboard/add-symptom' do
   puts params.inspect
-  redirect "/dashboard"
+  @result = true
+  @tempature = query("temperature")
+  @humidity = query("humidity")
+  @timestamp = pritty_date(date)
+  @symptoms_hash = symptoms
+  erb :dashboard
 end
 
 get '/login' do
@@ -62,6 +67,7 @@ get '/dashboard' do
   @humidity = query("humidity")
   @timestamp = pritty_date(date)
   @symptoms_hash = symptoms
+  @result = false
   @available_parts=['Head',
                     'Face',
                     'Mouth',
