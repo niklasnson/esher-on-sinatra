@@ -41,7 +41,11 @@
     <div class="col-6">
       <div class="card card-block">
         <% if @result %>
-          yes yes
+          <h4><%= @diagnosis[0]["Name"] %></h4>
+          <dt>Description</dt>
+          <dd><%= @diagnosis[0]["Description"] %></dd>
+          <dt>Treatment</dt>
+          <dd><%= @diagnosis[0]["TreatmentDescription"] %></dd>
         <% else %>
           <%= erb :'_diagnos_form' %>
         <% end %>

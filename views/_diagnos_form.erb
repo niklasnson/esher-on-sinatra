@@ -1,7 +1,7 @@
 <form action="dashboard/add-symptom" method="post">
   <div class="form-group">
     <label for="formFeels">It</label>
-    <select name="feel" class="form-control" id="formFeels">
+    <select name="a" class="form-control" id="formFeels">
       <option selected>Feels...</option>
       <% @symptoms_hash.each do |item| %>
         <option value="<%=item["ID"] %>"><%= item["Name"] %></option>
@@ -12,7 +12,7 @@
 
   <div class="form-group">
     <label for="formFeels">in my</label>
-    <select name="feel" class="form-control" id="formFeels">
+    <select name="b" class="form-control" id="formFeels">
       <option selected>Bodypart...</option>
       <% @symptoms_hash.each do |item| %>
         <option value="<%=item["ID"] %>"><%= item["Name"] %></option>
@@ -23,7 +23,7 @@
 
   <div class="form-group">
     <label for="formFeels">when</label>
-    <select name="feel" class="form-control" id="formFeels">
+    <select name="c" class="form-control" id="formFeels">
       <option selected>When...</option>
       <% @symptoms_hash.each do |item| %>
         <option value="<%=item["ID"] %>"><%= item["Name"] %></option>
@@ -33,7 +33,7 @@
 
   <div class="form-group">
     <label for="formFeels">At</label>
-    <select name="feel" class="form-control" id="formFeels">
+    <select name="d" class="form-control" id="formFeels">
       <option selected>Time...</option>
       <% @symptoms_hash.each do |item| %>
         <option value="<%=item["ID"] %>"><%= item["Name"] %></option>

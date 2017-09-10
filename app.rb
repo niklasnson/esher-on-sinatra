@@ -21,6 +21,14 @@ def symptoms
   response
 end
 
+
+def diagnosis(id)
+  url = "http://vitalbond.azurewebsites.net/home/sql?0=Esher"
+  payload = "getAllDiagnosis #{id}"
+  response = JSON.parse(HTTParty.post(url, body: payload)["Result"])
+  response
+end
+
 def date
   DateTime.now
 end
@@ -41,8 +49,8 @@ post '/mail' do
 end
 
 post '/dashboard/add-symptom' do
-  puts params.inspect
   @result = true
+  @diagnosis = diagnosis(10)
   @tempature = query("temperature")
   @humidity = query("humidity")
   @timestamp = pritty_date(date)
